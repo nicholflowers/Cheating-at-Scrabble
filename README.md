@@ -4,9 +4,9 @@
 
 ## 📌 Overview
 
-This is the classic "what can I make from these tiles?" problem. Given a rack of two to seven letters, with optional wildcards, the program searches the official Scrabble word list, finds every word the rack can form, scores each by Scrabble letter values, and returns them ranked from highest scoring to lowest.
+Scrabble players often want to know the strongest word they can make from their tiles. The goal of this project was to build a program that solves exactly that: given a rack of two to seven letters, find every valid Scrabble word it can form, score each one, and rank them from highest to lowest, with support for wildcard tiles.
 
-## 🎯 What It Does
+## 🎯 Project Goals
 
 - Finds all valid Scrabble words that can be built from a 2 to 7 letter rack
 - Scores each word by official Scrabble letter values and ranks by score, then alphabetically
@@ -43,8 +43,8 @@ This is the classic "what can I make from these tiles?" problem. Given a rack of
 ### 🔹 Word Matching
 
 - Reads the SOWPODS word list once into memory
-- For each candidate word, consumes letters from a copy of the rack to test whether the word can be formed
-- Falls back to a wildcard (`*` or `?`) when a needed letter is not otherwise available in the rack
+- Tests each word by consuming letters from a copy of the rack, rather than a simpler letter-count check, so that wildcards can stand in for any letter
+- Spends a wildcard only when a needed letter is not already in the rack. Because a word spelled with real letters keeps its full score while wildcards count zero, this returns the higher-scoring version when a word can be formed either way
 
 ### 🔹 Scoring
 
@@ -64,4 +64,4 @@ This is the classic "what can I make from these tiles?" problem. Given a rack of
 
 ## 🧰 Stack
 
-Python (standard library only)
+Python standard library.
