@@ -12,13 +12,26 @@ This is the classic "what can I make from these tiles?" problem. Given a rack of
 - Scores each word by official Scrabble letter values and ranks by score, then alphabetically
 - Supports wildcards (`*` and `?`), each standing in for any letter and scored as zero
 - Validates input and returns clear, helpful error messages instead of crashing
-- Runs efficiently enough to handle two wildcards within the assignment's time limit
+
+## 📋 Constraints
+
+- **Standard library only:** no third-party packages
+- **Wildcards:** at most two per rack (`*` and `?`), each scored as zero
+- **Performance:** must return results for a rack with two wildcards in under 30 seconds
+- **Error handling:** invalid input returns a clear message describing the problem. The program does not crash or surface a raw error trace.
 
 ## 🗂️ Data
 
 | Source | Description |
 | --- | --- |
 | SOWPODS word list (`sowpods.txt`) | The official list of valid Scrabble English words, one per line, kept in the repository so the program runs standalone. |
+
+## 🗃️ Files
+
+| File | Description |
+| --- | --- |
+| `scrabble.py` | The main program. `run_scrabble` finds every valid word in the rack, scores it, and ranks the results. |
+| `wordscore.py` | Holds `score_word`, which returns the Scrabble score for a given word. |
 
 ## 🚀 Implementation Details
 
@@ -51,4 +64,4 @@ This is the classic "what can I make from these tiles?" problem. Given a rack of
 
 ## 🧰 Stack
 
-Python standard library only, no third-party dependencies.
+Python (standard library only)
