@@ -1,6 +1,6 @@
 # 🔤 Cheating at Scrabble
 
-**A Python program that finds every valid Scrabble word you can build from a rack, scores each one, and ranks the results, wildcards included.**
+**A Python program that identifies every valid Scrabble word within a rack, including those formed with wildcards, and returns them scored and ranked.**
 
 ## 📌 Overview
 
