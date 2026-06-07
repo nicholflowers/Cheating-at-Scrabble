@@ -4,22 +4,19 @@
 
 ## 📌 Overview
 
-Scrabble players construct words from a rack of letter tiles, with each word scoring points according to the value of its tiles. A Scrabble cheater automates the search for the optimal play. Rather than relying on what a player can recall, it evaluates the entire official Scrabble dictionary against a given rack and returns every valid word, scored and ranked from highest to lowest.
+In Scrabble, players construct words from a rack of letter tiles, with each word scoring points according to the value of its tiles. A Scrabble cheater automates the search for the optimal play. Rather than relying on what a player can recall, it evaluates the entire official Scrabble dictionary against a given rack and returns every valid word, scored and ranked from highest to lowest.
 
+## 🎯 The Challenge
 
-## 🎯 Project Goals
+Matching words to a rack is simple when every tile is a fixed letter. A few things make it harder:
 
-- Finds all valid Scrabble words that can be built from a 2 to 7 letter rack
-- Scores each word by official Scrabble letter values and ranks by score, then alphabetically
-- Supports wildcards (`*` and `?`), each standing in for any letter and scored as zero
-- Validates input and returns clear, helpful error messages instead of crashing
+- **Wildcards multiply the possibilities:** a wildcard can stand in for any letter, and a rack can hold two, which sharply increases the number of words to check
+- **Scoring has to be deliberate:** a wildcard scores zero, so when a word can be made with or without one, the version built from real letters (the higher score) is the one that should be returned
+- **Performance matters:** the program must return results in under 30 seconds even when the rack holds two wildcards
 
 ## 📋 Constraints
 
-- **Standard library only:** no third-party packages
-- **Wildcards:** at most two per rack (`*` and `?`), each scored as zero
-- **Performance:** must return results for a rack with two wildcards in under 30 seconds
-- **Error handling:** invalid input returns a clear message describing the problem. The program does not crash or surface a raw error trace.
+- **Standard Python library only:** no third-party packages
 
 ## 🗂️ Data
 
@@ -35,6 +32,8 @@ Scrabble players construct words from a rack of letter tiles, with each word sco
 | `wordscore.py` | Holds `score_word`, which returns the Scrabble score for a given word. |
 
 ## 🚀 Implementation Details
+
+The program reads the official Scrabble word list, tests every word against the rack by consuming its letters (so a wildcard can stand in for any missing letter), then scores the matches and sorts them by score and alphabetically. Each step is detailed below.
 
 ### 🔹 Input Validation
 
@@ -65,4 +64,4 @@ Scrabble players construct words from a rack of letter tiles, with each word sco
 
 ## 🧰 Stack
 
-Python standard library.
+Python.
