@@ -11,29 +11,18 @@ In Scrabble, players construct words from a rack of letter tiles, with each word
 Matching words to a rack is simple when every tile is a fixed letter. A few things make it harder:
 
 - **Wildcards multiply the possibilities:** a wildcard can stand in for any letter, and a rack can hold two, which sharply increases the number of words to check
-- **Scoring has to be deliberate:** a wildcard scores zero, so when a word can be made with or without one, the version built from real letters (the higher score) is the one that should be returned
 - **Performance matters:** the program must return results in under 30 seconds even when the rack holds two wildcards
-
-## 📋 Constraints
-
-- **Standard Python library only:** no third-party packages
-
-## 🗂️ Data
-
-| Source | Description |
-| --- | --- |
-| SOWPODS word list (`sowpods.txt`) | The official list of valid Scrabble English words, one per line, kept in the repository so the program runs standalone. |
+- **Standard library only:** the solution had to use only the standard Python library, with no external packages to lean on
 
 ## 🗃️ Files
 
 | File | Description |
 | --- | --- |
+| `sowpods.txt` | The official SOWPODS list of valid Scrabble English words, one per line, kept in the repository so the program runs standalone. |
 | `scrabble.py` | The main program. `run_scrabble` finds every valid word in the rack, scores it, and ranks the results. |
 | `wordscore.py` | Holds `score_word`, which returns the Scrabble score for a given word. |
 
 ## 🚀 Implementation Details
-
-The program reads the official Scrabble word list, tests every word against the rack by consuming its letters (so a wildcard can stand in for any missing letter), then scores the matches and sorts them by score and alphabetically. Each step is detailed below.
 
 ### 🔹 Input Validation
 
@@ -42,14 +31,13 @@ The program reads the official Scrabble word list, tests every word against the 
 
 ### 🔹 Word Matching
 
-- Reads the SOWPODS word list once into memory
 - Tests each word by consuming letters from a copy of the rack, rather than a simpler letter-count check, so that wildcards can stand in for any letter
 - Spends a wildcard only when a needed letter is not already in the rack. Because a word spelled with real letters keeps its full score while wildcards count zero, this returns the higher-scoring version when a word can be formed either way
 
 ### 🔹 Scoring
 
 - Delegates scoring to a separate `wordscore.py` module through an imported `score_word` function, keeping the scoring logic modular and reusable
-- Applies standard Scrabble letter values; letters supplied by a wildcard score zero
+- Applies standard Scrabble letter values
 
 ### 🔹 Output
 
@@ -60,8 +48,3 @@ The program reads the official Scrabble word list, tests every word against the 
 - **Algorithm design:** a letter-consumption matching routine that treats wildcards as any-letter substitutions
 - **Modular code:** separating scoring into an imported module to keep responsibilities clean
 - **Input validation:** returning helpful, specific error messages instead of raising exceptions
-- **Python fundamentals:** file I/O, string processing, and custom-key sorting, written to PEP 8
-
-## 🧰 Stack
-
-Python.
