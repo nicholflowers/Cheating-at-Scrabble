@@ -4,7 +4,8 @@
 
 ## 📌 Overview
 
-Scrabble players often want to know the strongest word they can make from their tiles. The goal of this project was to build a program that solves exactly that: given a rack of two to seven letters, find every valid Scrabble word it can form, score each one, and rank them from highest to lowest, with support for wildcard tiles.
+Scrabble players construct words from a rack of letter tiles, with each word scoring points according to the value of its tiles. A Scrabble cheater automates the search for the optimal play. Rather than relying on what a player can recall, it evaluates the entire official Scrabble dictionary against a given rack and returns every valid word, scored and ranked from highest to lowest.
+
 
 ## 🎯 Project Goals
 
